@@ -18,13 +18,16 @@ About this fork - edited using Python version 3.12
 ================
 Some of the code had been refactored, and in keeping within the PEP 8 naming-conventions,
 all of the function names and variable names have been changed to lower case.
+These changes are reflected in utils.py, as well as this one. Where extensive use of
+static methods can be found.
 
+Side note:
+You can avoid security checkpoints/captchas by storing your login creds in the browser.
 
 TO DO 
 ============
-Avoid security checkpoints/captchas by storing your login creds in the browser.
-Want to be able to conduct all searches and applications within one browser session, 
-instead of launching a new browser with each iteration.
+Conduct all searches and applications within one browser session.
+This as oppossed to launching a new browser/login session with each iteration.
 A possible solution: retrieving and using session cookies from the browser.
 Find a way to store the session cookies in this script.
 
