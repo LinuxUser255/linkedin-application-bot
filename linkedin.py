@@ -11,21 +11,21 @@ Automated Linkedin Job application bot
 
 Introduction
 ============
-
 A python bot to apply all Linkedin Easy Apply jobs based on your preferences.
 This one version logs you in and applying to each job individually.
 
-!! TO DO !!
+About this fork - edited using Python version 3.12
+================
+Some of the code had been refactored, and in keeping within the PEP 8 naming-conventions,
+all of the function names and variable names have been changed to lower case.
+
+
+TO DO 
 ============
-Avoid security checkpoints/captchas.
-Find a way to either solve, or avoid the login security check/captcha.
-
-I found a way to avoid this by storing my login creds in the browser.
-This could be bypassed by using a current logged on session to apply to all jobs.
-as opposed to logging in for every job I apply to.
-
-Need to Use one session, and just crawl the job postings and applyl
-This could be accomplished by using the session cookies in this script.
+Avoid security checkpoints/captchas by storing your login creds in the browser.
+Want to be able to conduct all searches and applications within one browser session, 
+instead of launching a new browser with each iteration.
+A possible solution: retrieving and using session cookies from the browser.
 Find a way to store the session cookies in this script.
 
 References
@@ -33,20 +33,6 @@ References
 Original Author: amimblm(https://github.com/aminblm)
 Original Repository: https://github.com/aminblm/linkedin-application-bot
 """
-
-import math
-import os
-import platform
-import random
-import time
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-import config
-import constants
-import utils
-from utils import pr_red, pr_yellow, pr_green
 
 class Linkedin:
     def __init__(self):
@@ -91,7 +77,7 @@ class Linkedin:
         # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         # webdriver.Chrome(ChromeDriverManager().install())
         # webdriver.Firefox(options=utils.browserOptions())
-    #... rest of the class...
+    #... rest of the class
 
     def generate_urls(self):
         if not os.path.exists('data'):
@@ -306,3 +292,4 @@ while True:
         end = time.time()
         pr_yellow("---Took: " + str(round((time.time() - start) / 60)) + " minute(s).")
         Linkedin().driver.quit()
+
