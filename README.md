@@ -13,7 +13,7 @@ A python bot to apply all Linkedin Easy Apply jobs based on your preferences.
 
 ## Installation 🔌
 
-- clone the repo `git clone https://github.com/aminblm/linkedin-application-bot`
+- clone the repo `git clone https://github.com/LinuxUser255/linkedin-application-bot.git`
 - Make sure Python and pip is installed
 - Install dependencies with `pip3 install -r requirements.yaml`
 - Either create firefox Profile and put its path on line 8 of config.py or enter your linkedin credentials line 11 and 12 of config.py.
