@@ -26,10 +26,13 @@ You can avoid security checkpoints/captchas by storing your login creds in the b
 
 TO DO 
 ============
-Conduct all searches and applications within one browser session.
-This as oppossed to launching a new browser/login session with each iteration.
-A possible solution: retrieving and using session cookies from the browser.
-Find a way to store the session cookies in this script.
+- Conduct all searches and applications within one browser session.
+- This as oppossed to launching a new browser/login session with each iteration.
+- Avoid detetction: Try using Selenium's Undetected Chromedriver
+- https://pypi.org/project/undetected-chromedriver/2.1.1/
+- A possible solution: retrieving and using session cookies from the browser.
+- Find a way to store the session cookies in this script.
+
 
 References
 ==========
