@@ -37,6 +37,13 @@ A python bot to apply all Linkedin Easy Apply jobs based on your preferences.
 - Optional follow or not follow company upon successful application.
 - Much more!
 
+# TO DO - Needs the following - Nice to have
+
+- Conduct all searches and applications within one browser session.
+- This as oppossed to launching a new browser/login session with each iteration.
+- A possible solution: retrieving and using session cookies from the browser.
+- Find a way to store the session cookies in this script.
+
 ## Tests 🔦
 
 There is a specific test folder for you to test the dependencies, the bot and if everything is set up correctly. To do that I recommend,
