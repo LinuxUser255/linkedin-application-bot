@@ -24,6 +24,7 @@ In order of most to least important
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration.
 - [ ] Conduct all searches and applications within one browser session.
+- [ ] Look at other forks for ideas
 - [ ] ---
 - [ ] Maybe retrieve and use session cookies from the browser?
 - [ ] Chromium not woking properly with Linux
