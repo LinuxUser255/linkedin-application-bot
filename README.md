@@ -5,6 +5,7 @@
 
 ## A Python bot to apply all LinkedIn Easy Apply jobs based on your preferences.
 
+- [Python 3.12](https://docs.python.org/3/) used in this fork
 - Two options are avalible to use this bot, either with entering password or without, fully secure no credentials are stored.
 - Export all results and offers as txt file
 - Fully customizable job preferences
@@ -17,9 +18,9 @@ In order of most to least important
 
 - [x] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
 - [x] ~~Change all Variable and Function names to lower case: linkedin.py & utils.py~~
-- [x] Document code: Implement TypeHints & [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
+- [x] Document code: Implement [Type Hints](https://peps.python.org/pep-0484/) & [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
 - [x] ~~linkedin.py - document~~
-- [ ] utils.py - document
+- [x] ~~utils.py - Apply Type Hints only~~
 - [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration.
