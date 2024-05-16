@@ -110,8 +110,21 @@ class Linkedin:
     @staticmethod
     def generate_urls():
         """
-        Generate LinkedIn job URLs based on the specified criteria
-        in the config file.
+        Generate LinkedIn job URLs based on the specified criteria in the config file.
+
+        This function creates a directory named 'data' if it doesn't exist, then it opens a file named 'urlData.txt' in write mode.
+        It generates LinkedIn job URLs by calling the 'generate_url_links' method of the 'utils.LinkedinUrlGenerate' class.
+        These URLs are then written into the 'urlData.txt' file, one URL per line.
+        If any error occurs during the process, it prints an error message using the 'pr_red' function.
+
+        Parameters:
+        None
+
+        Returns:
+        None
+
+        Raises:
+        Exception: If any error occurs while creating the directory, opening the file, or writing to the file.
         """
         if not os.path.exists('data'):
             os.makedirs('data')
@@ -128,7 +141,17 @@ class Linkedin:
 
     def link_job_apply(self):
         """
-        Apply for jobs on LinkedIn based on the generated URLs.
+        This method is responsible for applying to jobs based on the generated URLs.
+        It navigates through the job search pages, retrieves job details, and applies to the jobs.
+
+        Parameters:
+        self (Linkedin): The instance of the Linkedin class.
+
+        Returns:
+        None
+
+        Raises:
+        Exception: If any error occurs during the execution of the method.
         """
         self.generate_urls()
         count_applied = 0
