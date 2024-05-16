@@ -39,6 +39,7 @@ References
 Original Author: amimblm(https://github.com/aminblm)
 Original Repository: https://github.com/aminblm/linkedin-application-bot
 """
+
 import math
 import os
 import platform
@@ -53,8 +54,16 @@ import constants
 import utils
 from utils import pr_red, pr_yellow, pr_green
 
+
 class Linkedin:
+    """
+    Linkedin class to automate job application process on LinkedIn.
+    """
     def __init__(self):
+        """
+        Initialize Linkedin class.
+        Login to LinkedIn using the specified browser and credentials.
+        """
         browser = config.browser[0].lower()
         linkedin_email = config.email
         if browser == "firefox":
@@ -62,17 +71,18 @@ class Linkedin:
                 print(platform.system())
                 if platform.system == "Linux":
                     pr_yellow(
-                        "On Linux you need to define profile path to run the bot with Firefox. Go about:profiles find"
-                        "root directory of your profile paste in line 8 of config file next to firefoxProfileRootDir")
+                        "On Linux you need to define profile path to run the bot with Firefox. Go about:profiles find "
+                        "root directory of your profile paste in line 8 of config file next to firefoxProfileRootDir ")
                     exit()
                 else:
                     self.driver = webdriver.Firefox()
-                    self.driver.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
-                    pr_yellow("Trying to log in linkedin.")
+                    self.driver.get(
+                        "https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+                    pr_yellow("Attempting to log into linkedin...")
                     try:
                         self.driver.find_element("id", "username").send_keys(linkedin_email)
                         self.driver.find_element("id", "password").send_keys(config.password)
-                        time.sleep(8)
+                        time.sleep(5)
                         self.driver.find_element("xpath", '//*[@id="organic-div"]/form/div[3]/button').click()
                     except Exception as e:
                         pr_red(e)
@@ -80,8 +90,8 @@ class Linkedin:
                 self.driver = webdriver.Firefox()
         elif browser == "chrome":
             self.driver = webdriver.Chrome()
-            self.driver.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
-            pr_yellow("Trying to log in linkedin.")
+            self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+            pr_yellow("Attempting to log into linkedin...")
             try:
                 self.driver.find_element("id", "username").send_keys(linkedin_email)
                 time.sleep(5)
@@ -96,9 +106,13 @@ class Linkedin:
         # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         # webdriver.Chrome(ChromeDriverManager().install())
         # webdriver.Firefox(options=utils.browserOptions())
-    #... rest of the class
 
-    def generate_urls(self):
+    @staticmethod
+    def generate_urls():
+        """
+        Generate LinkedIn job URLs based on the specified criteria
+        in the config file.
+        """
         if not os.path.exists('data'):
             os.makedirs('data')
         try:
@@ -108,9 +122,14 @@ class Linkedin:
                     file.write(url + "\n")
             pr_green("Urls are created successfully, now the bot will visit those urls.")
         except:
-            pr_red("Could not generate url, make sure you have /data folder and modified config.py file for your preferences.")
+            pr_red(
+                "Couldnt generate url, make sure you have /data folder and modified config.py file for your "
+                "preferances.")
 
     def link_job_apply(self):
+        """
+        Apply for jobs on LinkedIn based on the generated URLs.
+        """
         self.generate_urls()
         count_applied = 0
         count_jobs = 0
@@ -145,7 +164,7 @@ class Linkedin:
                     offer_ids.append(int(offer_id.split(":")[-1]))
 
                 for jobID in offer_ids:
-                    offer_page = 'https://www.linkedin.com/jobs/search' + str(jobID)
+                    offer_page = 'https://www.linkedin.com/jobs/view/' + str(jobID)
                     self.driver.get(offer_page)
                     time.sleep(random.uniform(1, constants.botSpeed))
 
@@ -172,7 +191,7 @@ class Linkedin:
                                                          "button[aria-label='Continue to next step']").click()
                                 time.sleep(random.uniform(1, constants.botSpeed))
                                 com_percentage = self.driver.find_element(By.XPATH,
-                                                                         'html/body/div[3]/div/div/div[2]/div/div/span').text
+                                                                          'html/body/div[3]/div/div/div[2]/div/div/span').text
                                 percen_number = int(com_percentage[0:com_percentage.index("%")])
                                 result = self.apply_process(percen_number, offer_page)
                                 line_to_write = job_properties + " | " + result
@@ -180,15 +199,16 @@ class Linkedin:
 
                             except Exception as e:
                                 try:
-                                    self.driver.find_element(By.CSS_SELECTOR,"option[value='urn:li:country:" + config.country_code + "']").click()
+                                    self.driver.find_element(By.CSS_SELECTOR,
+                                                             "option[value='urn:li:country:" + config.country_code + "']").click()
                                     time.sleep(random.uniform(1, constants.botSpeed))
-                                    self.driver.find_element(By.CSS_SELECTOR, 'input').send_keys(config.phone_number);
+                                    self.driver.find_element(By.CSS_SELECTOR, 'input').send_keys(config.phone_number)
                                     time.sleep(random.uniform(1, constants.botSpeed))
                                     self.driver.find_element(By.CSS_SELECTOR,
                                                              "button[aria-label='Continue to next step']").click()
                                     time.sleep(random.uniform(1, constants.botSpeed))
                                     com_percentage = self.driver.find_element(By.XPATH,
-                                                                             'html/body/div[3]/div/div/div[2]/div/div/span').text
+                                                                              'html/body/div[3]/div/div/div[2]/div/div/span').text
                                     percen_number = int(com_percentage[0:com_percentage.index("%")])
                                     result = self.apply_process(percen_number, offer_page)
                                     line_to_write = job_properties + " | " + result
@@ -202,11 +222,23 @@ class Linkedin:
                         self.display_write_results(line_to_write)
 
             pr_yellow("Category: " + url_words[0] + "," + url_words[1] + " applied: " + str(count_applied) +
-                     "jobs out of " + str(count_jobs) + ".")
+                      " jobs out of " + str(count_jobs) + ".")
 
         # utils.donate(self)
 
     def get_job_properties(self, count):
+        """
+        This function retrieves and formats the properties of a job from the LinkedIn job page.
+
+        Parameters:
+        count (int): The count of the job being processed.
+
+        Returns:
+        str: A formatted string containing the job properties.
+
+        The function retrieves the job title, company, location, workplace type, posted date, and number of applications
+        from the LinkedIn job page and formats them into a single string.
+        """
         text_to_write = ""
         job_title = ""
         job_company = ""
@@ -223,7 +255,7 @@ class Linkedin:
             job_title = ""
         try:
             job_company = self.driver.find_element(By.XPATH,
-                                                  "//a[contains(@class, 'ember-view t-black t-normal')]").get_attribute(
+                                                   "//a[contains(@class, 'ember-view t-black t-normal')]").get_attribute(
                 "innerHTML").strip()
         except Exception as e:
             pr_yellow("Warning in getting job_company: " + str(e)[0:50])
@@ -236,20 +268,21 @@ class Linkedin:
             job_location = ""
         try:
             job_work_place = self.driver.find_element(By.XPATH,
-                                                    "//span[contains(@class, 'workplace-type')]").get_attribute(
+                                                      "//span[contains(@class, 'workplace-type')]").get_attribute(
                 "innerHTML").strip()
         except Exception as e:
             pr_yellow("Warning in getting jobWorkPlace: " + str(e)[0:50])
             job_work_place = ""
         try:
-            job_posted_date = self.driver.find_element(By.XPATH, "//span[contains(@class, 'posted-date')]").get_attribute(
+            job_posted_date = self.driver.find_element(By.XPATH,
+                                                       "//span[contains(@class, 'posted-date')]").get_attribute(
                 "innerHTML").strip()
         except Exception as e:
             pr_yellow("Warning in getting job_posted_date: " + str(e)[0:50])
             job_posted_date = ""
         try:
             job_applications = self.driver.find_element(By.XPATH,
-                                                       "//span[contains(@class, 'applicant-count')]").get_attribute(
+                                                        "//span[contains(@class, 'applicant-count')]").get_attribute(
                 "innerHTML").strip()
         except Exception as e:
             pr_yellow("Warning in getting job_applications: " + str(e)[0:50])
@@ -260,16 +293,46 @@ class Linkedin:
         return text_to_write
 
     def easy_apply_button(self):
+        """
+        This method is used to find the 'Easy Apply' button on LinkedIn job pages.
+
+        Parameters:
+        self (Linkedin): The instance of the Linkedin class.
+
+        Returns:
+        selenium.webdriver.remote.webelement.WebElement or bool:
+            Returns the 'Easy Apply' button if found, otherwise returns False.
+
+        Raises:
+        Exception: If any error occurs during the execution of the method.
+        """
         try:
+            # Find the 'Easy Apply' button using the XPath selector.
             button = self.driver.find_element(By.XPATH,
                                               '//button[contains(@class, "jobs-apply-button")]')
             easy_apply_button = button
         except:
+            # If the 'Easy Apply' button is not found, return False.
             easy_apply_button = False
 
         return easy_apply_button
 
-    def apply_process(self, percentage, offerPage):
+    def apply_process(self, percentage, offer_page):
+        """
+        This method calculates the number of pages to navigate through the LinkedIn application process based on the given
+        percentage and then performs the application process.
+
+        Parameters:
+        self (Linkedin): The instance of the Linkedin class.
+        percentage (int): The percentage of the application process completed.
+        offer_page (str): The URL of the LinkedIn job offer page.
+
+        Returns:
+        str: A string indicating the result of the application process.
+
+        Raises:
+        Exception: If any error occurs during the execution of the method.
+        """
         apply_pages = math.floor(100 / percentage)
         result = ""
         try:
@@ -287,13 +350,26 @@ class Linkedin:
             self.driver.find_element(By.CSS_SELECTOR, "button[aria-label='Submit application']").click()
             time.sleep(random.uniform(1, constants.botSpeed))
 
-            result = "* 🥳 Just Applied to this job: " + str(offerPage)
+            result = "* 🥳 Just Applied to this job: " + str(offer_page)
         except:
             result = "* 🥵 " + str(apply_pages) + " Pages, couldn't apply to this job! Extra info needed. Link: " + str(
-                offerPage)
+                offer_page)
         return result
 
-    def display_write_results(self, line_to_write: str):
+    @staticmethod
+    def display_write_results(line_to_write: str):
+        """
+        This function prints and writes the given line to the results file.
+
+        Parameters:
+        line_to_write (str): The line to be printed and written.
+
+        Returns:
+        None
+
+        Raises:
+        Exception: If there is an error while writing to the file.
+        """
         try:
             print(line_to_write)
             utils.write_results(line_to_write)
@@ -311,4 +387,3 @@ while True:
         end = time.time()
         pr_yellow("---Took: " + str(round((time.time() - start) / 60)) + " minute(s).")
         Linkedin().driver.quit()
-
