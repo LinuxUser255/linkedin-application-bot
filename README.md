@@ -29,8 +29,11 @@ In order of most to least important
 - [ ] Add More robustness of the bot for different fields
 - [ ] Blacklist offers in Linkedin
 - [ ] Output not completed fields in Linkedin
-- [ ] Add support to other major job seeking websites (Glassdoor, AngelCo, Greenhouse, Monster, GLobalLogic, djinni)
-- [ ] AngelCo - https://angel.co/l/2xRADV
+- [ ] Add support to other major job seeking websites:
+- [ ] [Indeed](https://www.indeed.com/)
+- [ ] [Glassdoor](https://www.glassdoor.com/index.htm)
+- [ ] [AngelCo](https://angel.co/l/2xRADV) And possibly Greenhouse, Monster, GLobalLogic, and djinni.
+
 
 <br>
 
@@ -38,12 +41,13 @@ In order of most to least important
 ## Installation 🔌
 
 - clone the repo `git clone https://github.com/LinuxUser255/linkedin-application-bot.git`
-- Make sure Python and pip is installed
+- Make sure [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/getting-started/) is installed
 - Install dependencies with `pip3 install -r requirements.yaml`
 - Either create firefox Profile and put its path on line 8 of config.py or enter your linkedin credentials line 11 and 12 of config.py.
 - Modify config.py according to your demands.
 - Run `python3 linkedin.py`
 - Check Applied Jobs DATA .txt file is generate under /data folder
+- [Selenium Documentation](https://www.selenium.dev/selenium/docs/api/py/index.html#)
 
 
 ## Features 💡
