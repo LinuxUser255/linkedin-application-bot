@@ -19,7 +19,7 @@ In order of most to least important
 - [ ] Change all Variable and Function names to lower case: linkedin.py & utils.py
 - [ ] Document code: Implement [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
 - [x] ~~linkedin.py - document~~
-- [ ] utils.py
+- [ ] utils.py - document
 - [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration.
