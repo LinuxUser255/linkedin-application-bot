@@ -73,12 +73,11 @@ In order of most to least important
 
 ## Tests 🔦
 
-There is a specific test folder for you to test the dependencies, the bot and if everything is set up correctly. To do that I recommend,
-running below codes,
+There is test script that can be run to test the dependencies, and functionality of the bot. 
 
-1. Go to the tests folder run `python3 setupTests.py` this will output if Python,pip,selenium,dotenv and Firefox are installed correctly on your system.
-2. Run `python3 seleniumTest.py` this will output if the Selenium and gecko driver is able to retrieve data from a website. If it returns an error make sure you have correctly installed selenium and gecko driver
-3. Run `python3 linkedinTest.py` this will try to log in automatically to your Linkedin account based on the path you defined in the .env file. If its giving an error make sure the path exists and you created firefox profile, logged in manually to your Linkedin account once.
+1. Located in the repo's parent directory is a script named `test.py`. this will check if Python, pip, selenium, dotenv and Firefox are correctly installed on your system.
+2. Run `python3 test.py` (or click the green arrow on the line `if __name__ == "__main__":`), this will output if the Selenium and gecko driver is able to retrieve data from a website. If it returns an error make sure you have correctly installed selenium and gecko drive
+3. It will also try to log in to your Linkedin account based on the path you defined in the .env file. If its giving an error make sure the path exists and you created firefox profile, logged in manually to your Linkedin account once.
    Here is the result you should get after running test files,
    ![test1](https://user-images.githubusercontent.com/34207598/189535308-c2c546de-caec-4460-823d-dd5ca208c480.png)
 
