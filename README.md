@@ -15,8 +15,8 @@
 # TO DO - Fixes and Changes 
 In order of most to least important
 
-- [ ] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
-- [ ] Change all Variable and Function names to lower case
+- [x] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
+- [ ] Change all Variable and Function names to lower case: linkedin.py & utils.py
 - [ ] Document code: Implement [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
 - [x] ~~linkedin.py - document~~
 - [ ] utils.py
