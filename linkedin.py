@@ -48,6 +48,7 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 import config
 import constants
@@ -59,7 +60,7 @@ class Linkedin:
     """
     Linkedin class to automate job application process on LinkedIn.
     """
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize Linkedin class.
         Login to LinkedIn using the specified browser and credentials.
@@ -108,7 +109,7 @@ class Linkedin:
         # webdriver.Firefox(options=utils.browserOptions())
 
     @staticmethod
-    def generate_urls():
+    def generate_urls() -> None:
         """
         Generate LinkedIn job URLs based on the specified criteria in the config file.
 
@@ -139,7 +140,7 @@ class Linkedin:
                 "Couldnt generate url, make sure you have /data folder and modified config.py file for your "
                 "preferances.")
 
-    def link_job_apply(self):
+    def link_job_apply(self) -> None:
         """
         This method is responsible for applying to jobs based on the generated URLs.
         It navigates through the job search pages, retrieves job details, and applies to the jobs.
@@ -249,7 +250,7 @@ class Linkedin:
 
         # utils.donate(self)
 
-    def get_job_properties(self, count):
+    def get_job_properties(self, count: int) -> str:
         """
         This function retrieves and formats the properties of a job from the LinkedIn job page.
 
@@ -315,7 +316,7 @@ class Linkedin:
             count) + " | " + job_title + " | " + job_company + " | " + job_location + " | " + job_work_place + " | " + job_posted_date + " | " + job_applications
         return text_to_write
 
-    def easy_apply_button(self):
+    def easy_apply_button(self) -> Union[WebElement, bool]:
         """
         This method is used to find the 'Easy Apply' button on LinkedIn job pages.
 
@@ -340,7 +341,7 @@ class Linkedin:
 
         return easy_apply_button
 
-    def apply_process(self, percentage, offer_page):
+    def apply_process(self, percentage: int, offer_page: str) -> str:
         """
         This method calculates the number of pages to navigate through the LinkedIn application process based on the given
         percentage and then performs the application process.
@@ -380,7 +381,7 @@ class Linkedin:
         return result
 
     @staticmethod
-    def display_write_results(line_to_write: str):
+    def display_write_results(line_to_write: str) -> None:
         """
         This function prints and writes the given line to the results file.
 
