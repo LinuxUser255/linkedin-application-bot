@@ -3,12 +3,35 @@
 ### Forked from <https://github.com/aminblm/linkedin-application-bot/tree/main>
 ![linkedineasyapplygif](https://user-images.githubusercontent.com/34207598/128695728-6efcb457-0f75-42e2-987a-f7a0c239a235.gif)
 
-A python bot to apply all Linkedin Easy Apply jobs based on your preferences.
+## A Python bot to apply all LinkedIn Easy Apply jobs based on your preferences.
 
 - Two options are avalible to use this bot, either with entering password or without, fully secure no credentials are stored.
 - Export all results and offers as txt file
 - Fully customizable job preferences
 - Can be used for many job search websites such as Linkedin, Glassdoor, AngelCo, Greenhouse, Monster, GLobalLogic and Djinni.
+
+<br>
+
+# TO DO - Fixes and Changes 
+In order of most to least important
+
+- [ ] Follow PEP 8 Syle Guide coding conventions:
+- [ ] Change all Variable and Function names to lower case
+- [ ] Avoid account login issues:
+- [ ] Evade Anti-Bot detection
+- [ ] Eliminate launching a new browser/login session with each iteration.
+- [ ] Conduct all searches and applications within one browser session.
+- [ ] Maybe retrieve and use session cookies from the browser?
+- [ ] Fix specified HTML element discovery issues
+- [ ] Chromium not woking properly with Linux
+- [ ] Headless browser experience (run the bot without launching the browser)
+- [ ] More robustness of the bot for different fields
+- [ ] Blacklist offers in Linkedin
+- [ ] Output not completed fields in Linkedin
+- [ ] Add support to other major job seeking websites (Glassdoor, AngelCo, Greenhouse, Monster, GLobalLogic, djinni)
+- [ ] AngelCo - https://angel.co/l/2xRADV
+
+<br>
 
 
 ## Installation 🔌
@@ -21,22 +44,16 @@ A python bot to apply all Linkedin Easy Apply jobs based on your preferences.
 - Run `python3 linkedin.py`
 - Check Applied Jobs DATA .txt file is generate under /data folder
 
-# TO DO - Needs the following - Nice to have
-
-- Avoid account login issues: Conduct all searches and applications within one browser session.
-- This as oppossed to launching a new browser/login session with each iteration.
-- A possible solution: retrieving and using session cookies from the browser.
-- Find a way to store the session cookies in this script.
-
 
 ## Features 💡
 
-- Ability to filter jobs, by easy apply, by location (Worldwide, Europe, Poland, etc.), by keyword (python, react, node), by experience, position, job type and date posted.
+- Ability to filter jobs, by easy apply, by location, keyword, by experience, position, job type and date posted.
+- See config.py, this is where you set job filtering
 - Apply based on your salary preferance (works best for job offers from States)
 - Automatically apply single page jobs in which you need to send your up-to-date CV and contact.
-- Automatically apply more than one page long offers with the requirements saved in LinkedIn like experience, legal rights, resume etc.
+- Automatically apply more than one page long offers with the requirements saved in LinkedIn like experience, etc.
 - Output the results in a data txt file where you can later work on.
-- Print the links for the jobs that the bot couldn’t apply for because of extra requirements. (User can manually apply them to optimize the bot)
+- Print the links for the jobs that the bot couldn’t apply, due to extra requirements.
 - Put time breaks in between functions to prevent threshold.
 - Automatically apply for jobs.
 - Automatically run in the background.
@@ -84,10 +101,6 @@ This tutorial briefly explains how to set up LinkedIn Easy Apply jobs bot. With 
 
 ## Future Implementations
 
-- Headless browser experience (run the bot without launching the browser)
-- More robustness of the bot for different fields
-- Blacklist offers in Linkedin
-- Output not completed fields in Linkedin
-- Add support to other major job seeking websites (Glassdoor, AngelCo, Greenhouse, Monster, GLobalLogic, djinni)
-- AngelCo - https://angel.co/l/2xRADV
+- See the TO DO list above
 
+<br>
