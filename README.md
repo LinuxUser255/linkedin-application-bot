@@ -15,17 +15,18 @@
 # TO DO - Fixes and Changes 
 In order of most to least important
 
-- [ ] Follow PEP 8 Syle Guide coding conventions:
+- [ ] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
 - [ ] Change all Variable and Function names to lower case
-- [ ] Avoid account login issues:
-- [ ] Evade Anti-Bot detection
+- [ ] Document code: Implement [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
+- [ ] Fix specified HTML element discovery issues for button click etc..
+- [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration.
 - [ ] Conduct all searches and applications within one browser session.
+- [ ] ---
 - [ ] Maybe retrieve and use session cookies from the browser?
-- [ ] Fix specified HTML element discovery issues
 - [ ] Chromium not woking properly with Linux
-- [ ] Headless browser experience (run the bot without launching the browser)
-- [ ] More robustness of the bot for different fields
+- [ ] Implement Headless browser experience (run the bot without launching the browser)
+- [ ] Add More robustness of the bot for different fields
 - [ ] Blacklist offers in Linkedin
 - [ ] Output not completed fields in Linkedin
 - [ ] Add support to other major job seeking websites (Glassdoor, AngelCo, Greenhouse, Monster, GLobalLogic, djinni)
