@@ -18,7 +18,7 @@ In order of most to least important
 - [ ] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
 - [ ] Change all Variable and Function names to lower case
 - [ ] Document code: Implement [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
-- [ ] Fix specified HTML element discovery issues for button click etc..
+- [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration.
 - [ ] Conduct all searches and applications within one browser session.
