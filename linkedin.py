@@ -104,7 +104,7 @@ class Linkedin:
         else:
             raise ValueError(f"Unsupported browser: {browser}")
 
-    def login(self) -> None:
+        def login(self) -> None:
         """
         Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
         """
@@ -113,13 +113,17 @@ class Linkedin:
         # self.driver = webdriver.Firefox(options=utils.browserOptions())
         # if config.firefox_profile_root_dir!= "":
         try:
+            # Use the current logged in firefox instance
+            # and conduct all searches and applications within that browser session.
             self.driver = webdriver.Firefox(options=utils.browser_options())
+            # Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
             self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+            # Begin job search according to the specified criteria in the config file.
+            self.driver.get("https://www.linkedin.com/jobs/?=")
             time.sleep(5)
             pr_yellow("Attempting to log into linkedin...")
         except Exception as e:
             pr_red(e)
-
 
     @staticmethod
     def generate_urls() -> None:
