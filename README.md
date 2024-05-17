@@ -22,15 +22,14 @@ In order of most to least important
 - [x] ~~linkedin.py - document~~
 - [x] ~~utils.py - Apply Type Hints only~~
 - [x] ~~Sort out the Firefox Profile config~~
-- [x] **Resolve inability to login using the Firefox Profile option**
-- [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""` 
-- [ ] **NEED To AUTO LOGIN with the main `linkedin.py` script**
+- [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
+- [x] ~~Refactor and clean up the Linkedin Class block of code in `linkedin.py`~~
+- [ ] **NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script**
 - [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
 - [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
 - [ ] Conduct all searches and applications within one browser session.
-- [x] Look at other [Forks](https://github.com/aminblm/linkedin-application-bot/forks) for ideas
+- [ ] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
-- [ ] Chromium not woking properly with Linux
 - [ ] Implement Headless browser experience (run the bot without launching the browser)
 - [ ] Add More robustness of the bot for different fields
 - [ ] Blacklist offers in Linkedin
