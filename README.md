@@ -23,7 +23,7 @@ In order of most to least important
 - [x] ~~utils.py - Apply Type Hints only~~
 - [x] ~~Sort out the Firefox Profile config~~
 - [ ] **Resolve inability to login using the Firefox Profile option**
-- [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
+- [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
 - [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
 - [ ] Conduct all searches and applications within one browser session.
 - [x] Look at other [Forks](https://github.com/aminblm/linkedin-application-bot/forks) for ideas
