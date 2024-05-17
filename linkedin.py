@@ -108,11 +108,9 @@ class Linkedin:
         """
         Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
         """
-        # self.driver = webdriver.Firefox(options=utils.browserOptions())
-        # self.driver = webdriver.Chrome(options=utils.browserOptions())
-        # self.driver = webdriver.Firefox(options=utils.browserOptions())
         # if config.firefox_profile_root_dir!= "":
         try:
+            # Intended operation. But not working.
             # Use the current logged in firefox instance
             # and conduct all searches and applications within that browser session.
             self.driver = webdriver.Firefox(options=utils.browser_options())
