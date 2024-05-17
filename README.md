@@ -22,7 +22,9 @@ In order of most to least important
 - [x] ~~linkedin.py - document~~
 - [x] ~~utils.py - Apply Type Hints only~~
 - [x] ~~Sort out the Firefox Profile config~~
-- [ ] **Resolve inability to login using the Firefox Profile option**
+- [x] **Resolve inability to login using the Firefox Profile option**
+- [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""` 
+- [ ] **NEED To AUTO LOGIN with the main `linkedin.py` script**
 - [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
 - [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
 - [ ] Conduct all searches and applications within one browser session.
