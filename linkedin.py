@@ -23,6 +23,7 @@ Tip: Avoid security checkpoints/captchas by storing your login creds in the brow
 by using Firefox and storing your profile data in /env/.env
 
 End Goal: what this is suppossed to do:
+========================================
 1. Launch just one selenium browser instance & auto logged into my account
 
 2. have linkedin.py search and apply for all jobs based on your config.py specs
