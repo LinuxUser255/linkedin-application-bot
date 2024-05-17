@@ -16,13 +16,21 @@ This one version logs you in and applying to each job individually.
 
 About this fork - edited using Python version 3.12
 ================
-Some of the code had been refactored, and in keeping within the PEP 8 naming-conventions,
+Some of the code has been refactored, and in keeping within the PEP 8 naming-conventions,
 all of the function names and variable names have been changed to lower case.
-These changes are reflected in utils.py, as well as this one. Where extensive use of
-static methods can be found.
+These changes are reflected in utils.py, as linkein.py
+Tip: Avoid security checkpoints/captchas by storing your login creds in the browser
+by using Firefox and storing your profile data in /env/.env
 
-Side note:
-You can avoid security checkpoints/captchas by storing your login creds in the browser.
+End Goal: what this is suppossed to do:
+1. Launch just one selenium browser instance & auto logged into my account
+
+2. have linkedin.py search and apply for all jobs based on your config.py specs
+
+3. Have it iterate/repeate this process untill all jobs have been applied to
+
+4. and all non fast apply jobs have had their urls logged in /data/urlData.txt
+
 
 TO DO
 ============
