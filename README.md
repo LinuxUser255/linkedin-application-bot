@@ -25,7 +25,7 @@ In order of most to least important
 - [ ] Resolve inability to login using the Firefox Profile option
 - [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
-- [ ] Eliminate launching a new browser/login session with each iteration.
+- [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
 - [ ] Conduct all searches and applications within one browser session.
 - [ ] Look at other [Forks](https://github.com/aminblm/linkedin-application-bot/forks) for ideas
 - [ ] ---
