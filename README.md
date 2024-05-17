@@ -22,7 +22,7 @@ In order of most to least important
 - [x] ~~linkedin.py - document~~
 - [x] ~~utils.py - Apply Type Hints only~~
 - [x] ~~Sort out the Firefox Profile config~~
-- [ ] Resolve inability to login using the Firefox Profile option
+- [ ] **Resolve inability to login using the Firefox Profile option**
 - [ ] Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).
 - [ ] Implement [Anti-Bot detection](https://scrapeops.io/selenium-web-scraping-playbook/python-selenium-undetected-chromedriver/) to avoid account login issues, captchas
 - [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
