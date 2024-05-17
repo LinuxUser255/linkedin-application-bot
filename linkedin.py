@@ -24,15 +24,26 @@ static methods can be found.
 Side note:
 You can avoid security checkpoints/captchas by storing your login creds in the browser.
 
-TO DO 
+TO DO
 ============
-- Conduct all searches and applications within one browser session.
-- This as oppossed to launching a new browser/login session with each iteration.
-- Avoid detetction: Try using Selenium's Undetected Chromedriver
-- https://pypi.org/project/undetected-chromedriver/2.1.1/
-- A possible solution: retrieving and using session cookies from the browser.
-- Find a way to store the session cookies in this script.
-
+- [x] ~~Sort out the Firefox Profile config~~
+- [x] **Resolve inability to login using the Firefox Profile option**
+- [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
+- [x] Refactor and clean up the Linkedin Class block of code in linkedin.py
+- [ ] **NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script**
+- [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
+- [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
+- [ ] Conduct all searches and applications within one browser session.
+- [ ] Forget Chrome, Just use firefox, it's easier to automate.
+- [ ] ---
+- [ ] Implement Headless browser experience (run the bot without launching the browser)
+- [ ] Add More robustness of the bot for different fields
+- [ ] Blacklist offers in Linkedin
+- [ ] Output not completed fields in Linkedin
+- [ ] Add support to other major job seeking websites:
+- [ ] [Indeed](https://www.indeed.com/)
+- [ ] [Glassdoor](https://www.glassdoor.com/index.htm)
+- [ ] [AngelCo](https://angel.co/l/2xRADV) And possibly Greenhouse, Monster, GLobalLogic, and djinni.
 
 References
 ==========
@@ -45,6 +56,7 @@ import os
 import platform
 import random
 import time
+from typing import Union
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -55,58 +67,50 @@ import constants
 import utils
 from utils import pr_red, pr_yellow, pr_green
 
-
 class Linkedin:
-    """
-    Linkedin class to automate job application process on LinkedIn.
-    """
+
     def __init__(self) -> None:
         """
-        Initialize Linkedin class.
-        Login to LinkedIn using the specified browser and credentials.
+        Initialize LinkedIn class.
+        Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
+        """
+        self.driver = self.get_webdriver()
+        self.login()
+
+    def get_webdriver(self) -> webdriver.Remote:
+        """
+        Get the appropriate webdriver based on the specified browser.
+
+        Returns:
+        webdriver.Remote: The webdriver instance.
         """
         browser = config.browser[0].lower()
-        linkedin_email = config.email
-        if browser == "firefox":
-            if len(linkedin_email) > 0:
-                print(platform.system())
-                if platform.system == "Linux":
-                    pr_yellow(
-                        "On Linux you need to define profile path to run the bot with Firefox. Go about:profiles find "
-                        "root directory of your profile paste in line 8 of config file next to firefoxProfileRootDir ")
-                    exit()
-                else:
-                    self.driver = webdriver.Firefox()
-                    self.driver.get(
-                        "https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
-                    pr_yellow("Attempting to log into linkedin...")
-                    try:
-                        self.driver.find_element("id", "username").send_keys(linkedin_email)
-                        self.driver.find_element("id", "password").send_keys(config.password)
-                        time.sleep(5)
-                        self.driver.find_element("xpath", '//*[@id="organic-div"]/form/div[3]/button').click()
-                    except Exception as e:
-                        pr_red(e)
-            else:
-                self.driver = webdriver.Firefox()
-        elif browser == "chrome":
-            self.driver = webdriver.Chrome()
-            self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
-            pr_yellow("Attempting to log into linkedin...")
-            try:
-                self.driver.find_element("id", "username").send_keys(linkedin_email)
-                time.sleep(5)
-                self.driver.find_element("id", "password").send_keys(config.password)
-                time.sleep(5)
-                self.driver.find_element("xpath", '//*[@id="organic-div"]/form/div[3]/button').click()
-            except:
-                pr_red(
-                    "Couldnt log in Linkedin by using chrome please try again for Firefox by creating a firefox "
-                    "profile.")
+        browser_mapping = {
+            "firefox": webdriver.Firefox,
+            "chrome": webdriver.Chrome
+        }
 
-        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        # webdriver.Chrome(ChromeDriverManager().install())
-        # webdriver.Firefox(options=utils.browserOptions())
+        if browser in browser_mapping:
+            return browser_mapping[browser]()
+        else:
+            raise ValueError(f"Unsupported browser: {browser}")
+
+    def login(self) -> None:
+        """
+        Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
+        """
+        # self.driver = webdriver.Firefox(options=utils.browserOptions())
+        # self.driver = webdriver.Chrome(options=utils.browserOptions())
+        # self.driver = webdriver.Firefox(options=utils.browserOptions())
+        # if config.firefox_profile_root_dir!= "":
+        try:
+            self.driver = webdriver.Firefox(options=utils.browser_options())
+            self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+            time.sleep(5)
+            pr_yellow("Attempting to log into linkedin...")
+        except Exception as e:
+            pr_red(e)
+
 
     @staticmethod
     def generate_urls() -> None:
@@ -146,7 +150,7 @@ class Linkedin:
         It navigates through the job search pages, retrieves job details, and applies to the jobs.
 
         Parameters:
-        self (Linkedin): The instance of the Linkedin class.
+        self (LinkedIn): The instance of the Linkedin class.
 
         Returns:
         None
