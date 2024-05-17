@@ -13,6 +13,19 @@
 
 <br>
 
+## End Goal: what this is suppossed to do:
+
+**1. Launch just one selenium browser instance & auto logged into your account using your firefox profile**
+
+**2. have linkedin.py search and apply for all jobs based on your config.py specs**
+
+**3. Have it iterate/repeate this process untill all jobs have been applied to**
+
+**4. and all non fast apply jobs have had their urls logged in `/data/urlData.txt`**
+
+
+<br>
+
 # TO DO - Fixes and Changes 
 In order of most to least important
 
