@@ -47,6 +47,7 @@ In order of most to least important
 - [ ] Add More robustness of the bot for different fields
 - [ ] Blacklist offers in Linkedin
 - [ ] Output not completed fields in Linkedin
+- [ ] Check out this other [Fork of linkedin application bot](https://github.com/maxjonata/linkedin-application-bot-br/tree/main)
 - [ ] Add support to other major job seeking websites:
 - [ ] [Indeed](https://www.indeed.com/)
 - [ ] [Glassdoor](https://www.glassdoor.com/index.htm)
