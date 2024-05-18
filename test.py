@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import time
 from selenium import webdriver
@@ -50,40 +51,44 @@ def check_firefox():
 
 def check_selenium_linkedin():
     options = Options()
-    # firefoxProfileRootDir = os.getenv('firefoxProfileRootDir')
+    # firefox_profile_root_dir = os.getenv('firefox_profile_root_dir')
+    # firefox_profile_local_dir = os.getenv('firefox_profile_local_dir')
+    firefox_profile_root_dir = r"/home/linux/.mozilla/firefox/3r8i5lzn.Chris"
 
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-extensions")
+    # options.add_argument("--disable-extensions")
     options.add_argument("--disable-blink-features")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    # options.add_argument("-profile")
-    # options.add_argument(firefoxProfileRootDir)
+    options.add_argument("-profile")
+    options.add_argument(firefox_profile_root_dir)
     # options.headless = True
 
     browser = webdriver.Firefox(options=options)
 
-    try:
-        browser.get('https://www.ongundemirag.com')
-        if browser.title.index("Ongun") > -1:
-            pr_green("✅ Selenium and geckodriver is working succesfully!")
-        else:
-            pr_red("❌ Please check if Selenium and geckodriver is installed")
-    except Exception as e:
-        pr_red(e)
+#    try:
+#        browser.get('https://www.ongundemirag.com')
+#        if browser.title.index("Ongun") > -1:
+#            pr_green("✅ Selenium and geckodriver is working succesfully!")
+#        else:
+#            pr_red("❌ Please check if Selenium and geckodriver is installed")
+#    except Exception as e:
+#        pr_red(e)
 
     try:
-        browser.get('https://www.linkedin.com/feed/')
+        browser.get('https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin')
+        options.add_argument(firefox_profile_root_dir)
+       # browser.get("https://www.linkedin.com/jobs/?=")
         time.sleep(3)
         if "Feed" in browser.title:
-            pr_green('✅ Successfully you are logged in to Linkedin, you can now run main bot script!')
+            pr_green('✅ You are successfully logged in to Linkedin, you can now run main bot script!')
         else:
             pr_red('❌ You are not automatically logged in, please set up your Firefox Account correctly.')
     except Exception as e:
         pr_red(e)
-    finally:
-        browser.quit()
+    #finally:
+    #    browser.quit()
 
 
 def main():
@@ -96,3 +101,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
