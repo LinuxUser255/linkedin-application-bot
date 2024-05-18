@@ -3,7 +3,7 @@
 ### Forked from <https://github.com/aminblm/linkedin-application-bot/tree/main>
 ![linkedineasyapplygif](https://user-images.githubusercontent.com/34207598/128695728-6efcb457-0f75-42e2-987a-f7a0c239a235.gif)
 
-## A Python bot to apply all LinkedIn Easy Apply jobs based on your preferences.
+## A Python bot that AUTOMATES  all LinkedIn Easy Apply jobs based on your preferences.
 
 - [Python 3.12](https://docs.python.org/3/) used in this fork
 - Two options are avalible to use this bot, either with entering password or without, fully secure no credentials are stored.
@@ -13,7 +13,7 @@
 
 <br>
 
-## End Goal: what this is suppossed to do:
+# End Goal: what's this suppossed to do ?
 
 **1. Launch just one selenium browser instance & auto logged into your account using your firefox profile**
 
@@ -37,9 +37,9 @@ In order of most to least important
 - [x] ~~Sort out the Firefox Profile config~~
 - [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
 - [x] ~~Refactor and clean up the Linkedin Class block of code in `linkedin.py`~~
-- [ ] **NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script**
+- [ ] **!! NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script !!**
 - [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
-- [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
+- [ ] **!! Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this !!**
 - [ ] Conduct all searches and applications within one browser session.
 - [ ] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
