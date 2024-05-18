@@ -31,7 +31,7 @@ from selenium.webdriver.firefox.options import Options
 
 def browser_options() -> Options:
     options = Options()
-    firefox_profile_root_dir = config.firefoxProfileRootDir
+    firefox_profile_root_dir = config.firefox_profile_root_dir
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
     options.add_argument('--no-sandbox')
@@ -126,14 +126,6 @@ def write_results(text: str) -> None:
 
 def print_info_mes(bot: str) -> None:
     pr_yellow("ℹ️ " + bot + " is starting soon... ")
-
-
-#def donate(self):
-#    pr_yellow('If you like the project, please support me so that i can make more such projects, thanks!')
-#    try:
-#        self.driver.get('https://commerce.coinbase.com/checkout/576ee011-ba40-47d5-9672-ef7ad29b1e6c')
-#    except Exception as e:
-#        pr_red("Error in donate: " + str(e))
 
 
 def check_job_location(job: str) -> str:
@@ -307,4 +299,3 @@ class LinkedinUrlGenerate:
         elif config.sort[0] == "Relevent":
             sort_by = "sort_by=R"
         return sort_by
-
