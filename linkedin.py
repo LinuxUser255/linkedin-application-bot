@@ -59,40 +59,29 @@ References
 Original Author: amimblm(https://github.com/aminblm)
 Original Repository: https://github.com/aminblm/linkedin-application-bot
 """
-
 import math
 import os
-import platform
 import random
-import time
 from typing import Union
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-
 import config
 import constants
-import utils
 from utils import pr_red, pr_yellow, pr_green
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import utils
+from test import check_selenium_linkedin
 
-class Linkedin:
 
-    def __init__(self) -> None:
-        """
-        Initialize LinkedIn class.
-        Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
-        """
-        self.driver = self.get_webdriver()
+class LinkedIn:
+    def __init__(self):
+        self.driver = driver = self.get_webdriver
         self.login()
 
-    def get_webdriver(self) -> webdriver.Remote:
-        """
-        Get the appropriate webdriver based on the specified browser.
 
-        Returns:
-        webdriver.Remote: The webdriver instance.
-        """
+    @property
+    def get_webdriver(self) -> webdriver.Remote:
         browser = config.browser[0].lower()
         browser_mapping = {
             "firefox": webdriver.Firefox,
@@ -103,21 +92,14 @@ class Linkedin:
             return browser_mapping[browser]()
         else:
             raise ValueError(f"Unsupported browser: {browser}")
-
-        def login(self) -> None:
-        """
-        Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
-        """
-        # if config.firefox_profile_root_dir!= "":
+        
+    def login(self) -> None:
         try:
-            # Intended operation. But not working.
             # Use the current logged in firefox instance
             # and conduct all searches and applications within that browser session.
-            self.driver = webdriver.Firefox(options=utils.browser_options())
-            # Login to LinkedIn using the firefox_profile_root_dir located in the .env file.
             self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
             # Begin job search according to the specified criteria in the config file.
-            self.driver.get("https://www.linkedin.com/jobs/?=")
+            # self.driver.get("https://www.linkedin.com/jobs/?=")
             time.sleep(5)
             pr_yellow("Attempting to log into linkedin...")
         except Exception as e:
@@ -125,23 +107,6 @@ class Linkedin:
 
     @staticmethod
     def generate_urls() -> None:
-        """
-        Generate LinkedIn job URLs based on the specified criteria in the config file.
-
-        This function creates a directory named 'data' if it doesn't exist, then it opens a file named 'urlData.txt' in write mode.
-        It generates LinkedIn job URLs by calling the 'generate_url_links' method of the 'utils.LinkedinUrlGenerate' class.
-        These URLs are then written into the 'urlData.txt' file, one URL per line.
-        If any error occurs during the process, it prints an error message using the 'pr_red' function.
-
-        Parameters:
-        None
-
-        Returns:
-        None
-
-        Raises:
-        Exception: If any error occurs while creating the directory, opening the file, or writing to the file.
-        """
         if not os.path.exists('data'):
             os.makedirs('data')
         try:
@@ -156,19 +121,6 @@ class Linkedin:
                 "preferances.")
 
     def link_job_apply(self) -> None:
-        """
-        This method is responsible for applying to jobs based on the generated URLs.
-        It navigates through the job search pages, retrieves job details, and applies to the jobs.
-
-        Parameters:
-        self (LinkedIn): The instance of the Linkedin class.
-
-        Returns:
-        None
-
-        Raises:
-        Exception: If any error occurs during the execution of the method.
-        """
         self.generate_urls()
         count_applied = 0
         count_jobs = 0
@@ -266,18 +218,6 @@ class Linkedin:
         # utils.donate(self)
 
     def get_job_properties(self, count: int) -> str:
-        """
-        This function retrieves and formats the properties of a job from the LinkedIn job page.
-
-        Parameters:
-        count (int): The count of the job being processed.
-
-        Returns:
-        str: A formatted string containing the job properties.
-
-        The function retrieves the job title, company, location, workplace type, posted date, and number of applications
-        from the LinkedIn job page and formats them into a single string.
-        """
         text_to_write = ""
         job_title = ""
         job_company = ""
@@ -332,19 +272,6 @@ class Linkedin:
         return text_to_write
 
     def easy_apply_button(self) -> Union[WebElement, bool]:
-        """
-        This method is used to find the 'Easy Apply' button on LinkedIn job pages.
-
-        Parameters:
-        self (Linkedin): The instance of the Linkedin class.
-
-        Returns:
-        selenium.webdriver.remote.webelement.WebElement or bool:
-            Returns the 'Easy Apply' button if found, otherwise returns False.
-
-        Raises:
-        Exception: If any error occurs during the execution of the method.
-        """
         try:
             # Find the 'Easy Apply' button using the XPath selector.
             button = self.driver.find_element(By.XPATH,
@@ -357,21 +284,6 @@ class Linkedin:
         return easy_apply_button
 
     def apply_process(self, percentage: int, offer_page: str) -> str:
-        """
-        This method calculates the number of pages to navigate through the LinkedIn application process based on the given
-        percentage and then performs the application process.
-
-        Parameters:
-        self (Linkedin): The instance of the Linkedin class.
-        percentage (int): The percentage of the application process completed.
-        offer_page (str): The URL of the LinkedIn job offer page.
-
-        Returns:
-        str: A string indicating the result of the application process.
-
-        Raises:
-        Exception: If any error occurs during the execution of the method.
-        """
         apply_pages = math.floor(100 / percentage)
         result = ""
         try:
@@ -397,18 +309,6 @@ class Linkedin:
 
     @staticmethod
     def display_write_results(line_to_write: str) -> None:
-        """
-        This function prints and writes the given line to the results file.
-
-        Parameters:
-        line_to_write (str): The line to be printed and written.
-
-        Returns:
-        None
-
-        Raises:
-        Exception: If there is an error while writing to the file.
-        """
         try:
             print(line_to_write)
             utils.write_results(line_to_write)
@@ -419,10 +319,11 @@ class Linkedin:
 start = time.time()
 while True:
     try:
-        Linkedin().link_job_apply()
+        LinkedIn().link_job_apply()
     except Exception as e:
         pr_red("Error in main: " + str(e))
         # close firefox driver
         end = time.time()
         pr_yellow("---Took: " + str(round((time.time() - start) / 60)) + " minute(s).")
-        Linkedin().driver.quit()
+        LinkedIn().driver.quit()
+
