@@ -53,7 +53,7 @@ def check_selenium_linkedin():
     options = Options()
     # firefox_profile_root_dir = os.getenv('firefox_profile_root_dir')
     # firefox_profile_local_dir = os.getenv('firefox_profile_local_dir')
-    firefox_profile_root_dir = r"/home/linux/.mozilla/firefox/3r8i5lzn.Chris"
+    firefox_profile_root_dir = r"/home/joescomputer/.mozilla/firefox/1234567n.Joe"
 
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
