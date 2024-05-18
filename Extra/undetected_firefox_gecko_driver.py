@@ -3,13 +3,18 @@ undetected_firefox_gecko_driver.py
 
 Creating an undetected-geckodriver
 ===================================
+This script is not currently in use.
+Just here incase you wanted to create an undetected gecko driver
+See the Disclaimer below.
 
 Disclaimer/About:
 ===================
 Please note that creating an undetected-geckodriver is a complex task and may
 require advanced knowledge of browser automation and security measures.
+
 The provided code snippet is a basic example and may not cover all the necessary
 techniques for undetection.
+
 It is recommended to consult with security experts
 and conduct thorough testing before using the undetected-geckodriver in
 production environments.
