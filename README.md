@@ -40,6 +40,7 @@ In order of most to least important
 - [ ] **!! NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script !!**
 - [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
 - [ ] **!! Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this !!**
+- [ ] Your Firefox profile can be viewed: navigate to: `about:profiles` in the URL
 - [ ] Conduct all searches and applications within one browser session.
 - [ ] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
@@ -107,7 +108,7 @@ This tutorial briefly explains how to set up LinkedIn Easy Apply jobs bot. With 
 4. Install pip, python get-pip.py
 5. Install selenium pip install selenium
 6. Clone the code
-7. Create a profile on Firefox, about:profiles
+7. Create a profile on Firefox, `about:profiles`
 8. place your profile filepath inside the `firefox_profile_root_dir = r""` located in `/env/.env`
 9. Launch new profile, go Linkedin.com and log in your account
 10. Copy the root folder of your new profile, to do that type about:profiles on your Firefox search bar, copy the root folder C:\---\your-profile-name.
