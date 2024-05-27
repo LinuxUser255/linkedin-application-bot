@@ -45,14 +45,16 @@ TO DO
 - [ ] Conduct all searches and applications within one browser session.
 - [ ] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
-- [ ] Implement Headless browser experience (run the bot without launching the browser)
-- [ ] Add More robustness of the bot for different fields
-- [ ] Blacklist offers in Linkedin
-- [ ] Output not completed fields in Linkedin
-- [ ] Add support to other major job seeking websites:
-- [ ] [Indeed](https://www.indeed.com/)
-- [ ] [Glassdoor](https://www.glassdoor.com/index.htm)
-- [ ] [AngelCo](https://angel.co/l/2xRADV) And possibly Greenhouse, Monster, GLobalLogic, and djinni.
+- [ ] Use email & password to login. The Firefox browser user profile way is not working.
+- [ ] This means you need to augment the code to only login once and
+- [ ] then use the same session to conduct all searches and applications.
+
+### Goals:
+ **The following process needs to take place:**
+1. The first iteration of this bot will log you in, use the job search criteria specified in config.py, then search for, and apply to, one job.
+2. The second iteration of this code will use the current browser, and logged-in session, skiping the login process that occurs in step 1.
+-  The bot will continue to crawl/search for, and apply to, the next job, based on the defined criteria you specified in config.py
+3. Step 2 will repeat until all jobs, whithin the specified parameters have been applied to.
 
 References
 ==========
