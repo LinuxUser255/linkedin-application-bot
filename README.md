@@ -37,20 +37,34 @@ In order of most to least important
 - [x] ~~Sort out the Firefox Profile config~~
 - [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
 - [x] ~~Refactor and clean up the Linkedin Class block of code in `linkedin.py`~~
-- [ ] **!! NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script !!**
+-  ~~**If possible, AUTO LOGIN using firefox profile in the .env file `linkedin.py` script if possible~~**
 - [ ] **Then search for and apply to jobs**
 - [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
-- [ ] **!! Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this !!**
-- [ ] Your Firefox profile can be viewed: navigate to: `about:profiles` in the URL
+- [ ] **Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this**
+- [x] ~~Your Firefox profile can be viewed: navigate to: `about:profiles` in the URL~~
 - [ ] Conduct all searches and applications within one browser session.
-- [ ] Forget Chrome, Just use firefox, it's easier to automate.
+- [x] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
-- [ ] Implement Headless browser experience (run the bot without launching the browser)
-- [ ] Add More robustness of the bot for different fields
-- [ ] Blacklist offers in Linkedin
-- [ ] Output not completed fields in Linkedin
-- [ ] Check out this other [Fork of linkedin application bot](https://github.com/maxjonata/linkedin-application-bot-br/tree/main)
-- [ ] Add support to other major job seeking websites:
+- [ ] Use email & password to login. The Firefox browser user profile way is not working.
+- [ ] This means you need to augment the code to only login once and
+- [ ] then use the same session to conduct all searches and applications.
+- [ ] If you can refactor & use less code, then do so.
+
+# Goals:
+ 
+ ## The following process needs to take place:
+ - [ ] **The first iteration of this bot will log you in, use the job search criteria specified in config.py,
+    then search for, and apply to, one job.**
+    
+ - [ ] **The second iteration of this code will use the current browser, and logged-in session,
+    skiping the login process that occurs in step one.
+    The bot will then continue to crawl/search for, and apply to, the next job, based on the
+    defined criteria you specified in config.py**
+    
+- [ ] **Step two will repeat until all jobs, whithin the specified parameters have been applied to.**
+
+
+- [ ] Maybe add support to other major job seeking websites:
 - [ ] [Indeed](https://www.indeed.com/)
 - [ ] [Glassdoor](https://www.glassdoor.com/index.htm)
 - [ ] [AngelCo](https://angel.co/l/2xRADV) And possibly Greenhouse, Monster, GLobalLogic, and djinni.
