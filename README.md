@@ -35,11 +35,11 @@ In order of most to least important
 - [x] ~~linkedin.py - document~~
 - [x] ~~utils.py - Apply Type Hints only~~
 - [x] ~~Sort out the Firefox Profile config~~
-- [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
+- [x] ~~**Auto login with the test.py script:**Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`~~
 - [x] ~~Refactor and clean up the Linkedin Class block of code in `linkedin.py`~~
 -  ~~**If possible, AUTO LOGIN using firefox profile in the .env file `linkedin.py` script if possible~~**
 - [ ] **Then search for and apply to jobs**
-- [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
+- [x] ~~**Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**~~
 - [ ] **Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this**
 - [x] ~~Your Firefox profile can be viewed: navigate to: `about:profiles` in the URL~~
 - [ ] Conduct all searches and applications within one browser session.
