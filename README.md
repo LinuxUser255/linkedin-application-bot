@@ -45,8 +45,8 @@ In order of most to least important
 - [ ] Conduct all searches and applications within one browser session.
 - [x] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
-- [ ] Use email & password to login. The Firefox browser user profile way is not working.
-- [ ] This means you need to augment the code to only login once and
+- [x] Use email & password to login. The Firefox browser user profile way is not working.
+- [x] This means you need to augment the code to only login once and
 - [ ] then use the same session to conduct all searches and applications.
 - [ ] If you can refactor & use less code, then do so.
 
