@@ -61,6 +61,7 @@ References
 Original Author: amimblm(https://github.com/aminblm)
 Original Repository: https://github.com/aminblm/linkedin-application-bot
 """
+
 import math
 import os
 import random
@@ -73,14 +74,12 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import utils
-from test import check_selenium_linkedin
 
 
 class LinkedIn:
     def __init__(self):
         self.driver = driver = self.get_webdriver
         self.login()
-
 
     @property
     def get_webdriver(self) -> webdriver.Remote:
@@ -94,18 +93,29 @@ class LinkedIn:
             return browser_mapping[browser]()
         else:
             raise ValueError(f"Unsupported browser: {browser}")
-        
+
+
     def login(self) -> None:
         try:
-            # Use the current logged in firefox instance
-            # and conduct all searches and applications within that browser session.
-            self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
-            # Begin job search according to the specified criteria in the config file.
-            # self.driver.get("https://www.linkedin.com/jobs/?=")
+            # Log in to LinkedIn using the email and password specified in config.py.
+            self.driver = webdriver.Firefox()
+            # self.driver.get("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+            self.driver.get("https://www.linkedin.com/login")
+            self.driver.find_element("id", "username").send_keys(config.email)
+            self.driver.find_element("id", "password").send_keys(config.password)
             time.sleep(5)
+            # self.driver.find_element("xpath", '//*[@id="organic-div"]/form/div[3]/button').click()
+            sign_in_button = self.driver.find_element(By.CSS_SELECTOR, "button.btn__primary--large")
+            sign_in_button.click()
+           # self.driver.find_element("xpath", '//*[div=class]/login_form/button/"Sign in"').click()
             pr_yellow("Attempting to log into linkedin...")
         except Exception as e:
             pr_red(e)
+            # if user is already logged in, then skip the login process. and begin the link_job_apply() method.
+            if "Feed" in self.driver.title:
+                pr_green('✅ You are successfully logged in to Linkedin, you can now run main bot script!')
+                self.link_job_apply()
+                return
 
     @staticmethod
     def generate_urls() -> None:
@@ -128,7 +138,6 @@ class LinkedIn:
         count_jobs = 0
 
         url_data = utils.get_url_data_file()
-
         for url in url_data:
             self.driver.get(url)
             try:
@@ -328,4 +337,5 @@ while True:
         end = time.time()
         pr_yellow("---Took: " + str(round((time.time() - start) / 60)) + " minute(s).")
         LinkedIn().driver.quit()
+
 
