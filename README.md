@@ -29,7 +29,7 @@
 # TO DO - Fixes and Changes 
 In order of most to least important
 
-- [x] Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)
+- [x] ~~Follow [PEP 8 Syle Guide coding conventions:](https://peps.python.org/pep-0008/)~~
 - [x] ~~Change all Variable and Function names to lower case: linkedin.py & utils.py~~
 - [x] Document code: Implement [Type Hints](https://peps.python.org/pep-0484/) & [reStructuredText markup and doctrings](https://devguide.python.org/documentation/markup/)
 - [x] ~~linkedin.py - document~~
@@ -43,10 +43,10 @@ In order of most to least important
 - [ ] **Eliminate launching a new browser/login session with each iteration: Using Firefox profile resolves this**
 - [x] ~~Your Firefox profile can be viewed: navigate to: `about:profiles` in the URL~~
 - [ ] Conduct all searches and applications within one browser session.
-- [x] Forget Chrome, Just use firefox, it's easier to automate.
+- [x] ~~Forget Chrome, Just use firefox, it's easier to automate.~~
 - [ ] ---
-- [x] Use email & password to login. The Firefox browser user profile way is not working.
-- [x] This means you need to augment the code to only login once and
+- [x] ~~Use email & password to login. The Firefox browser user profile way is not working.~~
+- [x] ~~This means you need to augment the code to only login once and~~
 - [ ] then use the same session to conduct all searches and applications.
 - [ ] If you can refactor & use less code, then do so.
 
