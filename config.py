@@ -13,9 +13,10 @@ headless = True
 # For Example:
 # /home/joe/.mozilla/firefox/12345.johndoe
 # replace with your actual firefox account profile path
-firefoxProfileRootDir = r"/home/joe/.mozilla/firefox/12345.johndoe"
+# firefoxProfileRootDir = r"/home/joe/.mozilla/firefox/12345.johndoe"
 # If you left above field empty enter your Linkedin password and username below
 # Linkedin credits
+# having selenium log me in with credentials is more reliable
 email = ""
 password = ""
 
