@@ -32,22 +32,21 @@ from selenium.webdriver.firefox.options import Options
 
 def browser_options() -> Options:
     options = Options()
-    firefox_profile_root_dir = r"/home/linux/.mozilla/firefox/lub1eovr.Christopher"
 
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
     options.add_argument('--no-sandbox')
     options.add_argument("--disable-blink-features")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("-profile")
-    options.add_argument(firefox_profile_root_dir)
+    # options.add_argument("-profile")
+    # options.add_argument(firefox_profile_root_dir)
 
     browser = webdriver.Firefox(options=webdriver)
 
     # Goal is to use just one browser window, and either open a new tab with every iteration
     # or if possible, use the current tab and just make new requests in that
     try:
-        browser.get('https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin')
+        browser.get('https://www.linkedin.com/login')
 
         # Open a new tab
         browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 't')
