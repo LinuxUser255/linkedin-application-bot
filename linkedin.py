@@ -39,14 +39,11 @@ TO DO
 - [x] **Resolve inability to login using the Firefox Profile option**
 - [x] ~~**Auto login with the test.py script:**~~ Resoved by creating a `env` dir and a `.env` file containing `firefox_profile_root_dir = r""`
 - [x] Refactor and clean up the Linkedin Class block of code in linkedin.py
-- [ ] **NEED To AUTO LOGIN using firefox profile in the .env file `linkedin.py` script**
-- [ ] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
-- [ ] Eliminate launching a new browser/login session with each iteration: **Using Firefox profile resolves this**
+- [x] **Fix the [find_element "xpath" issues](https://selenium-python.readthedocs.io/locating-elements.html).**
 - [ ] Conduct all searches and applications within one browser session.
-- [ ] Forget Chrome, Just use firefox, it's easier to automate.
 - [ ] ---
-- [ ] Use email & password to login. The Firefox browser user profile way is not working.
-- [ ] This means you need to augment the code to only login once and
+- [x] Use email & password to login. The Firefox browser user profile way is not working.
+- [x] This means you need to augment the code to only login once and
 - [ ] then use the same session to conduct all searches and applications.
 
 ### Goals:
