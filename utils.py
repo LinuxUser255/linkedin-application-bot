@@ -21,32 +21,44 @@ https://peps.python.org/pep-0008/#naming-conventions
 Original Author: amimblm(https://github.com/aminblm)
 Original Repository: https://github.com/aminblm/linkedin-application-bot
 """
-
 import math, constants, config
+from selenium.webdriver.common.keys import Keys  # Import Keys
 from typing import List
 import time
 
+from selenium.webdriver.firefox import webdriver
 from selenium.webdriver.firefox.options import Options
 
 
 def browser_options() -> Options:
     options = Options()
-    firefox_profile_root_dir = config.firefox_profile_root_dir
+    firefox_profile_root_dir = r"/home/linux/.mozilla/firefox/lub1eovr.Christopher"
+
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-extensions")
-    options.add_argument('--disable-gpu')
-    if config.headless:
-        options.add_argument("--headless")
-
     options.add_argument("--disable-blink-features")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--incognito")
     options.add_argument("-profile")
     options.add_argument(firefox_profile_root_dir)
 
-    return options
+    browser = webdriver.Firefox(options=webdriver)
+
+    # Goal is to use just one browser window, and either open a new tab with every iteration
+    # or if possible, use the current tab and just make new requests in that
+    try:
+        browser.get('https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin')
+
+        # Open a new tab
+        browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 't')
+
+        # Navigate to the new tab URL
+        browser.get('https://www.linkedin.com/jobs/?=')
+
+    finally:
+        browser.quit()
+
+    #return options
 
 
 def pr_red(prt: str) -> None:
@@ -59,6 +71,20 @@ def pr_green(prt: str) -> None:
 
 def pr_yellow(prt: str) -> None:
     print(f"\033[93m{prt}\033[00m")
+
+    # create a function to check if the user is logged in or not
+    # if user is logged in, then skip the login process and apply to the jobs
+    # if user is not logged in, then log in and apply to the jobs
+def get_loggedin_status() -> bool:
+    try:
+        browser = webdriver.Firefox(options=browser_options())
+        browser.get('https://www.linkedin.com/login')
+        browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 't')
+        browser.get('https://www.linkedin.com/jobs/?=')
+        browser.quit()
+        return True
+    except:
+        return False
 
 
 def get_url_data_file() -> List[str]:
@@ -299,3 +325,15 @@ class LinkedinUrlGenerate:
         elif config.sort[0] == "Relevent":
             sort_by = "sort_by=R"
         return sort_by
+
+    def main(self):
+        # Your main function code goes here
+        # For example, you can call the LinkedinUrlGenerate class and its methods
+        url_generator = LinkedinUrlGenerate()
+        urls = url_generator.generate_url_links()
+        for url in urls:
+            print(url)
+
+    if __name__ == "__main__":
+        main()
+
